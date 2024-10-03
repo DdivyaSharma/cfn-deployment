@@ -1,0 +1,9 @@
+Resources:
+  DemoInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-037774efca2da0726
+      Tags:
+        - Key: "Name"
+               Value: !Join ["-", [testing, join, function]]
