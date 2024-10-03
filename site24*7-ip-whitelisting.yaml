@@ -1,0 +1,214 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Security Group 1 for PING and HTTP (port 80) and port 9009
+
+Resources:
+  SecurityGroup1:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupName: "site24*7-Virginia-region-SG-1"
+      GroupDescription: Allow PING and HTTP traffic on port 80 and 9009
+      VpcId: #vpc-id
+      SecurityGroupIngress:
+        # Virginia, US
+        - IpProtocol: icmp
+          FromPort: -1
+          ToPort: -1
+          CidrIp: 23.105.39.121/32
+        - IpProtocol: icmp
+          FromPort: -1
+          ToPort: -1
+          CidrIp: 108.62.123.84/32
+        - IpProtocol: icmp
+          FromPort: -1
+          ToPort: -1
+          CidrIp: 198.24.164.234/32
+        - IpProtocol: icmp
+          FromPort: -1
+          ToPort: -1
+          CidrIp: 23.235.225.122/32
+        - IpProtocol: icmp
+          FromPort: -1
+          ToPort: -1
+          CidrIp: 38.107.226.134/32
+        - IpProtocol: icmp
+          FromPort: -1
+          ToPort: -1
+          CidrIp: 38.107.226.220/32
+        - IpProtocol: icmp
+          FromPort: -1
+          ToPort: -1
+          CidrIp: 208.117.86.232/32
+        - IpProtocol: icmp
+          FromPort: -1
+          ToPort: -1
+          CidrIp: 131.153.220.98/32
+        - IpProtocol: icmp
+          FromPort: -1
+          ToPort: -1
+          CidrIp: 54.197.228.117/32
+        - IpProtocol: icmp
+          FromPort: -1
+          ToPort: -1
+          CidrIp: 184.73.18.166/32
+        - IpProtocol: icmp
+          FromPort: -1
+          ToPort: -1
+          CidrIp: 108.181.56.235/32
+        - IpProtocol: icmp
+          FromPort: -1
+          ToPort: -1
+          CidrIp: 147.189.135.50/32
+        - IpProtocol: icmp
+          FromPort: -1
+          ToPort: -1
+          CidrIp: 69.50.93.55/32
+
+        # PING for IPv6
+        - IpProtocol: icmpv6
+          FromPort: -1
+          ToPort: -1
+          CidrIpv6: 2604:9a00:2100:af0f:1::/128
+        - IpProtocol: icmpv6
+          FromPort: -1
+          ToPort: -1
+          CidrIpv6: 2607:f170:54:10::d00/128
+
+        # HTTP Rules for Port 80
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 75.101.151.107/32
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 174.129.225.90/32
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 207.244.104.49/32
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 207.244.103.237/32
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 207.244.104.233/32
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 207.244.97.125/32
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 207.244.104.199/32
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 207.244.112.137/32
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 23.105.39.121/32
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 108.62.123.84/32
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 198.24.164.234/32
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 23.235.225.122/32
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 38.107.226.134/32
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 38.107.226.220/32
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 208.117.86.232/32
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 131.153.220.98/32
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 54.197.228.117/32
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 184.73.18.166/32
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 108.181.56.235/32
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 147.189.135.50/32
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 69.50.93.55/32
+        
+        # HTTP Rules for Port 9009
+        - IpProtocol: tcp
+          FromPort: 9009
+          ToPort: 9009
+          CidrIp: 75.101.151.107/32
+        - IpProtocol: tcp
+          FromPort: 9009
+          ToPort: 9009
+          CidrIp: 174.129.225.90/32
+        - IpProtocol: tcp
+          FromPort: 9009
+          ToPort: 9009
+          CidrIp: 207.244.104.49/32
+        - IpProtocol: tcp
+          FromPort: 9009
+          ToPort: 9009
+          CidrIp: 207.244.103.237/32
+        - IpProtocol: tcp
+          FromPort: 9009
+          ToPort: 9009
+          CidrIp: 207.244.104.233/32
+        - IpProtocol: tcp
+          FromPort: 9009
+          ToPort: 9009
+          CidrIp: 207.244.97.125/32
+        - IpProtocol: tcp
+          FromPort: 9009
+          ToPort: 9009
+          CidrIp: 207.244.104.199/32
+        - IpProtocol: tcp
+          FromPort: 9009
+          ToPort: 9009
+          CidrIp: 207.244.112.137/32
+        - IpProtocol: tcp
+          FromPort: 9009
+          ToPort: 9009
+          CidrIp: 23.105.39.121/32
+        - IpProtocol: tcp
+          FromPort: 9009
+          ToPort: 9009
+          CidrIp: 108.62.123.84/32
+        - IpProtocol: tcp
+          FromPort: 9009
+          ToPort: 9009
+          CidrIp: 198.24.164.234/32
+        - IpProtocol: tcp
+          FromPort: 9009
+          ToPort: 9009
+          CidrIp: 23.235.225.122/32
+        - IpProtocol: tcp
+          FromPort: 9009
+          ToPort: 9009
+          CidrIp: 38.107.226.134/32
