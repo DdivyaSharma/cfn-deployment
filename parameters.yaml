@@ -1,0 +1,58 @@
+Parameters:
+  InstanceTypeParameter:
+    Type: String
+    Default: t2.micro
+    AllowedValues:
+      - t2.micro
+      - t2.small
+      - t4g.micro
+      - t4g.nano
+    Description: Enter t2.micro, t2.small, t4g.micro, t4g.nano
+  KeyName:
+    Description: Name of the EC2 instance key
+    Type: String
+
+Mappings:
+  AmiRegionMap:
+    us-east-1:
+      AMI: ami-0ebfd941bbafe70c6
+    us-east-2:
+      AMI: ami-037774efca2da0726
+
+Resources:
+  MyVPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.0.0.0/16
+
+  SecurityGroupTesting:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow http and ssh to client host
+      VpcId: !Ref MyVPC
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 111.93.41.42/32
+
+  PublicSubnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      CidrBlock: 10.0.0.0/24
+      AvailabilityZone: us-east-2a
+      VpcId: !Ref MyVPC
+
+  DemoInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: !Ref InstanceTypeParameter
+      KeyName: !Ref KeyName
+      ImageId: !FindInMap [AmiRegionMap, !Ref AWS::Region, AMI]
+      SecurityGroupIds:
+        - !Ref SecurityGroupTesting
+      SubnetId: !Ref PublicSubnet
